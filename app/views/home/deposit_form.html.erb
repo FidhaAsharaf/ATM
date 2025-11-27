@@ -1,0 +1,19 @@
+<h1>Deposit Money</h1>
+
+<% if flash[:alert] %>
+  <p style="color:red;"><%= flash[:alert] %></p>
+<% end %>
+
+<%= form_with url: deposit_path, local: true do |f| %>
+  <div>
+    <%= f.label :amount, "Enter Amount to Deposit" %><br>
+    <%= f.number_field :amount, min: 1, required: true %>
+  </div>
+
+  <br>
+
+  <%= f.submit "Deposit" %>
+<% end %>
+
+<br>
+<%= link_to "Back", welcome_path %>
