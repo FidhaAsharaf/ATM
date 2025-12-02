@@ -19,4 +19,7 @@ Rails.application.routes.draw do
   post "/signup", to: "users#create"
 
   get "/transactions", to: "home#transactions_list"
+
+  get  "/transfer", to: "home#transfer_form"
+  post "/transfer", to: "home#transfer"
 end

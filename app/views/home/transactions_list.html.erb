@@ -1,9 +1,11 @@
-<h1>Transaction History</h1>
+<div class=container>
+<h1 class="page-title mt-5">Transaction History</h1>
 
-<table border="1" cellpadding="8">
+<table class="transaction-table">
   <tr>
     <th>Date</th>
     <th>Type</th>
+    <th>Details</th>
     <th>Previous Balance</th>
     <th>Amount</th>
     <th>New Balance</th>
@@ -11,15 +13,45 @@
 
   <% @transactions.each do |t| %>
     <tr>
+
+      <!-- Date -->
       <td><%= t.created_at.strftime("%d-%m-%Y %I:%M %p") %></td>
-      <td><%= t.transaction_type.capitalize %></td>
+
+      <!-- Transaction Type -->
+      <td>
+        <% case t.transaction_type %>
+          <% when "deposit" %>
+            Deposit
+          <% when "withdraw" %>
+            Withdrawal
+          <% when "transfer_out" %>
+            Transfer (Sent)
+          <% when "transfer_in" %>
+            Transfer (Received)
+          <% else %>
+            <%= t.transaction_type %>
+        <% end %>
+      </td>
+
+      <!-- Details -->
+      <td>
+        <% if t.transaction_type == "transfer_out" %>
+          Sent money to another account
+        <% elsif t.transaction_type == "transfer_in" %>
+          Received money from another account
+        <% else %>
+          -
+        <% end %>
+      </td>
+
       <td>₹<%= t.previous_balance %></td>
       <td>₹<%= t.amount %></td>
       <td>₹<%= t.new_balance %></td>
+
     </tr>
   <% end %>
 </table>
 
 <br>
 
-<%= link_to "Back", welcome_path %>
+</div>

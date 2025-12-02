@@ -1,19 +1,31 @@
-<h1>Deposit Money</h1>
+<div class="container mt-5">
 
-<% if flash[:alert] %>
-  <p style="color:red;"><%= flash[:alert] %></p>
-<% end %>
-
-<%= form_with url: deposit_path, local: true do |f| %>
-  <div>
-    <%= f.label :amount, "Enter Amount to Deposit" %><br>
-    <%= f.number_field :amount, min: 1, required: true %>
+  <div class="text-center mb-4">
+    <h1 class="fw-bold">Deposit Money</h1>
   </div>
 
-  <br>
+  <% if flash[:alert] %>
+    <div class="alert alert-danger text-center">
+      <%= flash[:alert] %>
+    </div>
+  <% end %>
 
-  <%= f.submit "Deposit" %>
-<% end %>
+  <div class="card shadow p-4 mx-auto" style="max-width: 500px;">
+    
+    <%= form_with url: deposit_path, local: true do |f| %>
 
-<br>
-<%= link_to "Back", welcome_path %>
+      <div class="mb-3">
+        <%= f.label :amount, "Enter Amount to Deposit", class: "form-label fw-semibold" %>
+        <%= f.number_field :amount, min: 1, required: true, class: "form-control form-control-lg" %>
+      </div>
+
+      <div class="d-grid">
+        <%= f.submit "Deposit", class: "btn btn-success btn-lg" %>
+      </div>
+
+    <% end %>
+
+    
+  </div>
+
+</div>

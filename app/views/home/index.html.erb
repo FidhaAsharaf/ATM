@@ -1,15 +1,78 @@
-<h1>Welcome, <%= @user.email %>!</h1>
+<%
+=begin%>
+ <div class="container mt-5">
 
-<br>
+  <div class="text-center mb-4">
+    <h1 class="fw-bold">Welcome, <%= @user.email %>!</h1>
+    <p class="text-muted">Choose an action below</p>
+  </div>
 
-<%= button_to "Check Balance", balance_path, method: :get, class: "btn" %>
-<br>
+  <div class="card shadow p-4 mx-auto" style="max-width: 800px;">
 
-<%= button_to "Deposit", deposit_path, method: :get, class: "btn" %>
-<br>
+    <div class="row text-center g-3">
 
-<%= button_to "Withdraw", withdraw_path, method: :get, class: "btn" %>
-<br>
-<%= button_to "Transaction History", transactions_path, method: :get, class: "btn" %><br>
+      <div class="col-md-4">
+        <%= button_to "Check Balance", balance_path,
+              method: :get,
+              class: "btn btn-primary btn-lg w-100" %>
+      </div>
 
-<%= button_to "Logout", logout_path, method: :delete, class: "btn" %>
+      <div class="col-md-4">
+        <%= button_to "Deposit", deposit_path,
+              method: :get,
+              class: "btn btn-success btn-lg w-100" %>
+      </div>
+
+      <div class="col-md-4">
+        <%= button_to "Withdraw", withdraw_path,
+              method: :get,
+              class: "btn btn-warning btn-lg w-100 text-white" %>
+      </div>
+
+      <div class="col-md-4">
+        <%= button_to "Fund Transfer", transfer_path,
+              method: :get,
+              class: "btn btn-info btn-lg w-100 text-white" %>
+      </div>
+
+      <div class="col-md-4">
+        <%= button_to "Transaction History", transactions_path,
+              method: :get,
+              class: "btn btn-secondary btn-lg w-100" %>
+      </div>
+
+      <div class="col-md-4">
+        <%= button_to "Logout", logout_path,
+              method: :delete,
+              class: "btn btn-danger btn-lg w-100" %>
+      </div>
+
+    </div>
+  </div>
+</div>
+ 
+<%
+=end%>
+<div class="container mt-5">
+
+  <div class="text-center mb-4">
+    <h1 class="fw-bold">Welcome, <%= @user.email %>!</h1>
+    <%
+=begin%>
+ <p class="text-muted">Choose an action below</p> 
+<%
+=end%>
+  </div>
+
+  <%
+=begin%>
+ <div class="card shadow p-4 mx-auto" style="max-width: 800px;">
+
+    <div class="row text-center g-3">
+      ...
+    </div> 
+<%
+=end%>
+
+  </div>
+</div>

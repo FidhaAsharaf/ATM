@@ -1,19 +1,31 @@
-<h1>Withdraw Money</h1>
+<div class="container mt-5">
 
-<% if flash[:alert] %>
-  <p style="color:red;"><%= flash[:alert] %></p>
-<% end %>
-
-<p>Your current balance: <strong>₹<%= @balance %></strong></p>
-<%= form_with url: withdraw_path, method: :post, local: true do |form| %>
-  <div>
-    <%= form.label :amount, "Enter Amount to Withdraw" %><br>
-    <%= form.number_field :amount, min: 1, required: true %>
+  <div class="text-center mb-4">
+    <h1 class="fw-bold">Withdraw Money</h1>
   </div>
 
-  <br>
-  <%= form.submit "Withdraw" %>
-<% end %>
+  <% if flash[:alert] %>
+    <div class="alert alert-danger text-center">
+      <%= flash[:alert] %>
+    </div>
+  <% end %>
 
-<br>
-<%= link_to "Back", welcome_path %>
+  <div class="card shadow p-4 mx-auto" style="max-width: 500px;">
+
+
+    <%= form_with url: withdraw_path, method: :post, local: true do |form| %>
+
+      <div class="mb-3">
+        <%= form.label :amount, "Enter Amount to Withdraw", class: "form-label fw-semibold" %>
+        <%= form.number_field :amount, min: 1, required: true, class: "form-control form-control-lg" %>
+      </div>
+
+      <div class="d-grid">
+        <%= form.submit "Withdraw", class: "btn btn-warning btn-lg text-white" %>
+      </div>
+
+    <% end %>
+
+
+  </div>
+</div>

@@ -1,0 +1,41 @@
+.balance-container {
+  max-width: 500px;
+  margin: 80px auto;
+  padding: 30px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.balance-container h1 {
+  font-size: 32px;
+  color: #2c3e50;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.balance-amount {
+  font-size: 24px;
+  color: #34495e;
+  background: #f6f7f9;
+  padding: 15px;
+  border-radius: 8px;
+  font-weight: 600;
+  margin-bottom: 25px;
+}
+
+.back-btn {
+  display: inline-block;
+  padding: 10px 22px;
+  background: #3498db;
+  color: white;
+  text-decoration: none;
+  border-radius: 6px;
+  font-size: 18px;
+  transition: 0.2s ease;
+}
+
+.back-btn:hover {
+  background: #217dbb;
+}
