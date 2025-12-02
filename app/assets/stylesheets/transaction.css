@@ -31,17 +31,3 @@
 .transaction-table tr:hover {
   background-color: #e9f4ff;
 }
-
-.back-btn {
-  display: inline-block;
-  margin-top: 20px;
-  background: #007bff;
-  color: white;
-  padding: 8px 16px;
-  text-decoration: none;
-  border-radius: 5px;
-}
-
-.back-btn:hover {
-  background: #0056b3;
-}
