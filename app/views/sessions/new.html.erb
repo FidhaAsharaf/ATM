@@ -1,31 +1,6 @@
 <%
 =begin%>
- <h1>Login</h1>
-
-<% if flash[:alert] %>
-  <p style="color:red;"><%= flash[:alert] %></p>
-<% end %>
-
-<%= form_with url: login_path, local: true do |form| %>
-  <div class="field">
-    <%= form.label :email %><br>
-    <%= form.email_field :email, required: true %>
-  </div>
-
-  <div class="field">
-    <%= form.label :password %><br>
-    <%= form.password_field :password, required: true %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit "Login" %>
-  </div>
-<% end %>
-
-<p>New user? <%= link_to "Create Account", signup_path %></p> 
-<%
-=end%>
-<h1 class="text-center my-4">Login</h1>
+ <h1 class="text-center my-4">Login</h1>
 
 <% if flash[:alert] %>
   <div class="alert alert-danger text-center">
@@ -36,7 +11,7 @@
 <div class="container">
   <div class="card p-4 shadow mx-auto" style="max-width: 450px;">
     
-    <%= form_with url: login_path, local: true do |form| %>
+    <%= form_with url: login_path, local: true, data: { turbo: false } do |form| %>
 
       <div class="mb-3">
         <%= form.label :email, class: "form-label" %>
@@ -60,4 +35,48 @@
 
   </div>
 </div>
+ 
+<%
+=end%>
+<h1 class="text-center my-4">Login</h1>
 
+<div class="container">
+  <div class="card p-4 shadow mx-auto" style="max-width: 450px;">
+    
+    <%= form_with url: login_path, local: true, data: { turbo: false } do |form| %>
+
+      <!-- Email -->
+      <div class="mb-3">
+        <%= form.label :email, class: "form-label" %>
+        <%= form.email_field :email,
+              value: @entered_email,
+              class: "form-control",
+              required: true %>
+
+        <% if @email_error.present? %>
+          <span class="text-danger small"><%= @email_error %></span>
+        <% end %>
+      </div>
+
+      <!-- Password -->
+      <div class="mb-3">
+        <%= form.label :password, class: "form-label" %>
+        <%= form.password_field :password, class: "form-control", required: true %>
+
+        <% if @password_error.present? %>
+          <span class="text-danger small"><%= @password_error %></span>
+        <% end %>
+      </div>
+
+      <div class="d-grid">
+        <%= form.submit "Login", class: "btn btn-primary" %>
+      </div>
+
+    <% end %>
+
+    <p class="mt-3 text-center">
+      New user? <%= link_to "Create Account", signup_path, class: "link-primary" %>
+    </p>
+
+  </div>
+</div>
