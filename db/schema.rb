@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2025_12_02_074401) do
+ActiveRecord::Schema[8.1].define(version: 2025_12_10_060832) do
   create_table "transactions", force: :cascade do |t|
     t.integer "amount"
     t.datetime "created_at", null: false
@@ -27,6 +27,7 @@ ActiveRecord::Schema[8.1].define(version: 2025_12_02_074401) do
     t.datetime "created_at", null: false
     t.string "email"
     t.string "password_digest"
+    t.string "provider"
     t.datetime "updated_at", null: false
   end
 

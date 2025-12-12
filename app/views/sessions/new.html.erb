@@ -1,48 +1,13 @@
-<%
-=begin%>
- <h1 class="text-center my-4">Login</h1>
-
-<% if flash[:alert] %>
-  <div class="alert alert-danger text-center">
-    <%= flash[:alert] %>
-  </div>
-<% end %>
-
-<div class="container">
-  <div class="card p-4 shadow mx-auto" style="max-width: 450px;">
-    
-    <%= form_with url: login_path, local: true, data: { turbo: false } do |form| %>
-
-      <div class="mb-3">
-        <%= form.label :email, class: "form-label" %>
-        <%= form.email_field :email, class: "form-control", required: true %>
-      </div>
-
-      <div class="mb-3">
-        <%= form.label :password, class: "form-label" %>
-        <%= form.password_field :password, class: "form-control", required: true %>
-      </div>
-
-      <div class="d-grid">
-        <%= form.submit "Login", class: "btn btn-primary" %>
-      </div>
-
-    <% end %>
-
-    <p class="mt-3 text-center">
-      New user? <%= link_to "Create Account", signup_path, class: "link-primary" %>
-    </p>
-
-  </div>
-</div>
- 
-<%
-=end%>
 <h1 class="text-center my-4">Login</h1>
 
 <div class="container">
   <div class="card p-4 shadow mx-auto" style="max-width: 450px;">
-    
+     <%= button_to "/auth/google_oauth2",
+    method: :post,
+    class: "btn btn-danger w-100",
+    data: { turbo: false } do %>
+  <i class="bi bi-google"></i> Sign Up with Google
+<% end %>
     <%= form_with url: login_path, local: true, data: { turbo: false } do |form| %>
 
       <!-- Email -->

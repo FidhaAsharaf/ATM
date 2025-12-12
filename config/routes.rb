@@ -1,6 +1,11 @@
 Rails.application.routes.draw do
   root "sessions#new"
 
+  post "/auth/:provider", to: "omniauth#passthru"
+  get  "/auth/:provider/callback", to: "omniauth_callbacks#google"
+  get  "/auth/failure", to: redirect("/login")
+
+
   get "/login", to: "sessions#new"
   post "/login", to: "sessions#create"
   delete "/logout", to: "sessions#destroy"
