@@ -15,7 +15,7 @@
 #             if: :password_required?
 
 #   def password_required?
-#     provider.blank? # if Google user, skip password requirement
+#     provider.blank?
 #   end
 # end
 class User < ApplicationRecord
@@ -24,7 +24,6 @@ class User < ApplicationRecord
 
   validates :email, presence: true, uniqueness: true
 
-  # Google users don’t need password
   validates :password, presence: true, on: :create, if: :password_required?
 
   def password_required?
