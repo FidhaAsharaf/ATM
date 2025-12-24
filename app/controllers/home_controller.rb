@@ -1,5 +1,7 @@
 class HomeController < ApplicationController
-  before_action :require_login
+  # before_action :require_login
+  before_action :authenticate_request!
+
   before_action :set_user
 
   def index
@@ -133,7 +135,8 @@ class HomeController < ApplicationController
   end
 
   def set_user
-    @user = User.find(session[:user_id])
+    # @user = User.find(session[:user_id])
+    @user = @current_user
   end
 
   def require_login

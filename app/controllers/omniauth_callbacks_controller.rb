@@ -1,21 +1,34 @@
 class OmniauthCallbacksController < ApplicationController
-  skip_before_action :verify_authenticity_token, only: :google
+  skip_before_action :verify_authenticity_token
+
   def google
     auth = request.env["omniauth.auth"]
 
-    # Extract email from Google
-    email = auth.info.email
+    user = User.find_or_initialize_by(
+      email: auth.info.email
+    )
 
-    # Find or create the user
-    user = User.find_or_initialize_by(email: email)
-
-    # Create user if new (password not needed)
     if user.new_record?
-      user.password = SecureRandom.hex(10) # random password
-      user.save
+      user.provider = auth.provider
+      user.uid = auth.uid
+      user.password = SecureRandom.hex(20)
+      user.save!
     end
 
-    session[:user_id] = user.id
-    redirect_to welcome_path, notice: "Signed in with Google!"
+    token = JsonWebToken.encode(user_id: user.id)
+
+
+    # redirect_to welcome_path(token: token)
+    response = {
+      access_token: token,
+      user: {
+        id: user.id,
+        email: user.email
+      }
+    }
+
+    Rails.logger.info response.to_json
+    session[:access_token] = token
+    redirect_to welcome_path
   end
 end

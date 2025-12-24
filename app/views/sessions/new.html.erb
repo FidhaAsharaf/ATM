@@ -1,4 +1,6 @@
-<h1 class="text-center my-4">Login</h1>
+<%
+=begin%>
+ <h1 class="text-center my-4">Login</h1>
 
 <div class="container">
   <div class="card p-4 shadow mx-auto" style="max-width: 450px;">
@@ -44,4 +46,23 @@
     </p>
 
   </div>
+</div> 
+<%
+=end%>
+<h1 class="text-center my-4">Login</h1>
+
+<div class="container">
+  <div class="card p-4 shadow mx-auto" style="max-width: 400px;">
+
+    <%= button_to "/auth/google_oauth2",
+        method: :post,
+        class: "btn btn-danger w-100",
+        data: { turbo: false } do %>
+      <i class="bi bi-google"></i> Login with Google
+    <% end %>
+
+   
+
+  </div>
+
 </div>
