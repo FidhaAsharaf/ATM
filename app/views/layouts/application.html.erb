@@ -25,6 +25,12 @@
   </head>
 
   <body>
+  <!-- FLASH MESSAGES (VISIBLE ON ALL PAGES) -->
+  <% flash.each do |type, message| %>
+    <div class="alert alert-<%= type == "notice" ? "success" : "danger" %> text-center">
+      <%= message %>
+    </div>
+  <% end %>
   <% unless (controller_name == "sessions" && action_name == "new") ||
          (controller_name == "users" && action_name == "new") %>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top shadow">

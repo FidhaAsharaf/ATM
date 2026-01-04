@@ -1,15 +1,21 @@
-<%
-=begin%>
+
  <h1 class="text-center my-4">Login</h1>
 
 <div class="container">
   <div class="card p-4 shadow mx-auto" style="max-width: 450px;">
      <%= button_to "/auth/google_oauth2",
     method: :post,
-    class: "btn btn-danger w-100",
+    class: "btn btn-danger w-100 mb-3 mt-3",
     data: { turbo: false } do %>
-  <i class="bi bi-google"></i> Sign Up with Google
+  <i class="bi bi-google"></i> Login with Google
 <% end %>
+
+<div class="d-flex align-items-center my-3">
+      <hr class="flex-grow-1">
+      <span class="px-2 text-muted">OR</span>
+      <hr class="flex-grow-1">
+    </div>
+
     <%= form_with url: login_path, local: true, data: { turbo: false } do |form| %>
 
       <!-- Email -->
@@ -47,22 +53,3 @@
 
   </div>
 </div> 
-<%
-=end%>
-<h1 class="text-center my-4">Login</h1>
-
-<div class="container">
-  <div class="card p-4 shadow mx-auto" style="max-width: 400px;">
-
-    <%= button_to "/auth/google_oauth2",
-        method: :post,
-        class: "btn btn-danger w-100",
-        data: { turbo: false } do %>
-      <i class="bi bi-google"></i> Login with Google
-    <% end %>
-
-   
-
-  </div>
-
-</div>

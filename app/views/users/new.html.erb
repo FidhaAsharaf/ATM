@@ -2,12 +2,16 @@
 
 <div class="container">
   <div class="card p-4 shadow mx-auto" style="max-width: 500px;">
-  <%= button_to "/auth/google_oauth2",
+  <%
+=begin%>
+ <%= button_to "/auth/google_oauth2",
     method: :post,
     class: "btn btn-danger w-100",
     data: { turbo: false } do %>
   <i class="bi bi-google"></i> Sign Up with Google
-<% end %>
+<% end %> 
+<%
+=end%>
     <%= form_with model: @user, url: signup_path, method: :post, local: true, data: { turbo: false } do |form| %>
 
       <!-- Email -->
